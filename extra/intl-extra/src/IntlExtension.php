@@ -415,7 +415,9 @@ final class IntlExtension extends AbstractExtension
         }
 
         foreach ($symbols as $name => $value) {
-            $this->numberFormatters[$hash]->setSymbol(self::NUMBER_SYMBOLS[$name], $value);
+            if (false === strpos($value, '¤')) {
+                $this->numberFormatters[$hash]->setSymbol(self::NUMBER_SYMBOLS[$name], $value);
+            }
         }
 
         return $this->numberFormatters[$hash];
